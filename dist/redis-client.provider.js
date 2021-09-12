@@ -9,7 +9,7 @@ class RedisClientError extends Error {
 exports.RedisClientError = RedisClientError;
 async function getClient(options) {
     const { onClientReady, url, ...opt } = options;
-    const client = url ? new Redis(url) : new Redis(opt);
+    const client = url ? new Redis(url, opt) : new Redis(opt);
     if (onClientReady) {
         onClientReady(client);
     }
